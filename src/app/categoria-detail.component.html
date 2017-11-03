@@ -1,0 +1,20 @@
+<div *ngIf="categoria">
+    <h2>{{categoria.name}} details!</h2>
+   
+    <div>
+      <label>id: </label>{{categoria.id}}
+    </div>
+    <div>
+      <label>nombre: </label>
+      <div class="ui input  field">
+      <input [(ngModel)]="categoria.name" placeholder="name" />
+    </div>
+    </div>
+
+    <div class="ui buttons">
+        <button class="ui positive button" (click)="save()">Guardar</button>
+        <div class="or"></div>
+        <button class="ui red button" (click)="goBack()">Regresar</button>
+      </div>
+
+  </div>

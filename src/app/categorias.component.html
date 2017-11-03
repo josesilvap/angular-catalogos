@@ -1,0 +1,48 @@
+
+<form class="ui form">
+    <label>Categoria:</label> 
+<div class="ui input  field">
+ 
+  <input type="text" #categoriaName  />  
+</div>
+<button class="ui primary button" (click)="add(categoriaName.value); categoriaName.value=''">
+  Agregar
+</button>
+</form>
+
+<table class="ui equal width center aligned padded celled table">
+  <thead>
+    <tr><th>ID</th>
+    <th>Categoria</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let categoria of categorias" (click)="onSelect(categoria)" [class.selected]="categoria === selectedCategoria">
+    <td class="ui teal tag label">{{categoria.id}}</td>
+    <td>{{categoria.name}}</td>
+    <button class="ui circular google plus icon button" (click)="toggleModal()"> <i class="remove circle icon"></i></button>
+  </tr>
+  </tbody>
+</table>
+<div class="ui modal" id="modal">
+    <div class="header">¿Está seguro que desea eliminar esta categoria?</div>
+    <div class="content">
+        <div *ngIf="selectedCategoria">
+            <h2>
+                {{selectedCategoria.name | uppercase}} 
+            </h2>
+           
+        </div>
+    </div>
+    <div class="actions">
+      <button class="ui red button" (click)="delete(selectedCategoria); $event.stopPropagation()">Eliminar</button>
+      <div class="ui button" (click)="toggleModal()">Cancel</div>
+    </div>
+</div>
+<div *ngIf="selectedCategoria">
+  <h2>
+      {{selectedCategoria.name | uppercase}} Categoria
+  </h2>
+  <button class="ui blue button"(click)="gotoDetail()">Ver Detalles</button>
+</div>
+

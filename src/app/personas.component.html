@@ -1,0 +1,17 @@
+<h2>Personas</h2>
+
+<div class="ui link cards">
+<div *ngFor="let persona of personas" (click)="onSelect(persona)" [class.selected]="persona === selectedPersona" class="card">
+    <div class="ui medium bordered image" >
+        <img src="../assets/user.png">
+      </div>
+  
+  <div class="content">
+    <label class="header">{{persona.firstName}} {{persona.lastName}}</label>
+   
+  </div>
+  <div class="extra content">
+      <i class="hashtag icon"></i>{{persona.id}}
+  </div>
+</div>
+</div>
